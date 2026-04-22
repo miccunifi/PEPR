@@ -48,6 +48,7 @@ Code for semantic segmentation and detection coming soon!
 
 
 To simulate the event version of cityscapes, please refer to the official [VID2E](https://github.com/uzh-rpg/rpg_vid2e) repository.
+
 ---
 
 
@@ -63,7 +64,12 @@ To simulate the event version of cityscapes, please refer to the official [VID2E
 <div align="center">
   <h1 style="font-size: 2rem; margin-bottom: 1rem; color: #fff;">Detection</h1>
   
+  **FRED**
+
   <img src="https://github.com/miccunifi/PEPR/blob/main/static/images/fred.png?raw=true"/>
+  
+  **Hard DSEC**
+
   <img src="https://github.com/miccunifi/PEPR/blob/main/static/images/harddsec.png?raw=true"/>
 </div>
 
