@@ -3,7 +3,7 @@
 [![paper](https://img.shields.io/badge/paper-CVPRF26-blue.svg)](https://arxiv.org/pdf/2602.04583)
 
 <div align="center">
-  <img src="https://github.com/miccunifi/PEPR/blob/main/static/images/stage_true.pdf?raw=true" 
+  <img src="https://github.com/miccunifi/PEPR/blob/main/static/images/stage_2.pdf?raw=true" 
      alt="PEPR Method"
     width=720/>
 </div>
@@ -63,9 +63,8 @@ To simulate the event version of cityscapes, please refer to the official [VID2E
 <div align="center">
   <h1 style="font-size: 2rem; margin-bottom: 1rem; color: #fff;">Detection</h1>
   
-  <img src="https://github.com/miccunifi/PEPR/blob/main/static/images/segmentation.png?raw=true"/>
+  <img src="https://github.com/miccunifi/PEPR/blob/main/static/images/fred.png?raw=true"/>
   <img src="https://github.com/miccunifi/PEPR/blob/main/static/images/harddsec.png?raw=true"/>
-  <img src="https://github.com/miccunifi/PEPR/blob/main/static/images/segmentation.png?raw=true"/>
 </div>
 
 
