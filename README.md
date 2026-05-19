@@ -93,10 +93,10 @@ To simulate the event version of cityscapes, please refer to the official [VID2E
 If you use **PEPR** in your research, please cite:
 
 ```
-@article{magrini2026pepr,
+@inproceedings{magrini2026pepr,
   title={PEPR: Privileged Event-based Predictive Regularization for Domain Generalization},
   author={Magrini, Gabriele and Becattini, Federico and Biondi, Niccol{\`o} and Pala, Pietro},
-  journal={arXiv preprint arXiv:2602.04583},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
   year={2026}
 }
 ```
