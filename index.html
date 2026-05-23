@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- Metadata -->
+  <meta name="description" content="PEPR: Privileged Event-based Predictive Regularization for Domain Generalization">
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="PEPR, Event Cameras, RGB-Event, Domain Generalization, LUPI, Privileged Information, Predictive Regularization, Computer Vision">
+
+  <meta property="og:title" content="PEPR: Privileged Event-based Predictive Regularization for Domain Generalization">
+  <meta property="og:description" content="Training RGB models with event-camera privileged information for robust domain generalization.">
+  <meta property="og:url" content="https://miccunifi.github.io/PEPR/">
+  <meta property="og:image" content="static/images/stage_2.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:title" content="PEPR: Privileged Event-based Predictive Regularization">
+  <meta name="twitter:description" content="Events as privileged information for robust RGB-only domain generalization.">
+  <meta name="twitter:image" content="static/images/stage_2.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>PEPR: Privileged Event-based Predictive Regularization</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <!-- Bulma / icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+
+  <style>
+    body {
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+    .publication-title {
+      font-family: 'Google Sans', sans-serif;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .publication-title .pepr {
+      color: #6a2ca0;
+    }
+
+    .publication-authors {
+      margin-top: 1rem;
+    }
+
+    .author-block a {
+      color: #3273dc;
+    }
+
+    .conference {
+      margin-top: 0.75rem;
+      font-weight: 600;
+      color: #6a2ca0;
+    }
+
+    .publication-links {
+      margin-top: 1.5rem;
+    }
+
+    .link-block {
+      margin: 0.25rem;
+      display: inline-block;
+    }
+
+    .hero-teaser {
+      background: #f7f7f7;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .teaser-image {
+      max-width: 85%;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      background: white;
+    }
+
+    .section-title {
+      font-family: 'Google Sans', sans-serif;
+      font-weight: 700;
+    }
+
+    .tldr-box {
+      background: #f4ecfa;
+      border-left: 6px solid #6a2ca0;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .highlight {
+      color: #6a2ca0;
+      font-weight: 700;
+    }
+
+    .card-box {
+      border-radius: 14px;
+      border: 1px solid #e5e5e5;
+      padding: 1.25rem;
+      height: 100%;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+    }
+
+    .card-box h3 {
+      color: #6a2ca0;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .result-image {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #e5e5e5;
+      box-shadow: 0 6px 22px rgba(0,0,0,0.07);
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .dataset-list li {
+      margin-bottom: 0.6rem;
+    }
+
+    pre {
+      background-color: #1f1f1f;
+      color: #f5f5f5;
+      border-radius: 10px;
+      padding: 1.25rem;
+      overflow-x: auto;
+    }
+
+    .footer {
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <h1 class="title is-1 publication-title">
+            <span class="pepr">PEPR:</span> Privileged Event-based Predictive Regularization<br>
+            for Domain Generalization
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="#" target="_blank">Gabriele Magrini</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#" target="_blank">Federico Becattini</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#" target="_blank">Niccolò Biondi</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#" target="_blank">Pietro Pala</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <sup>1</sup>University of Florence &nbsp;&nbsp;
+              <sup>2</sup>University of Siena &nbsp;&nbsp;
+              <sup>3</sup>University of Trento
+            </span>
+          </div>
+
+          <div class="conference">
+            Accepted at CVPR 2026 Findings
+          </div>
+
+          <div class="publication-links">
+
+            <span class="link-block">
+              <a href="https://arxiv.org/pdf/2602.04583" target="_blank"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fas fa-file-pdf"></i>
+                </span>
+                <span>Paper</span>
+              </a>
+            </span>
+
+            <span class="link-block">
+              <a href="https://arxiv.org/abs/2602.04583" target="_blank"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="ai ai-arxiv"></i>
+                </span>
+                <span>arXiv</span>
+              </a>
+            </span>
+
+            <span class="link-block">
+              <a href="https://github.com/miccunifi/PEPR" target="_blank"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+              </a>
+            </span>
+
+            <span class="link-block">
+              <a href="#BibTeX"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fas fa-quote-right"></i>
+                </span>
+                <span>Cite</span>
+              </a>
+            </span>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser -->
+<section class="section hero-teaser">
+  <div class="container has-text-centered">
+    <img src="./static/images/stage_2.png" alt="PEPR Method Overview" class="teaser-image">
+  </div>
+</section>
+
+<!-- Abstract -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+
+        <h2 class="title is-3 section-title">Abstract</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            Deep neural networks for visual perception are highly susceptible to domain shift,
+            limiting their deployment under conditions that differ from the training data.
+            We address this problem through a cross-modal Learning Using Privileged Information
+            framework, where event cameras are available only during training and the final model
+            remains RGB-only at inference.
+          </p>
+
+          <p>
+            RGB streams are semantically dense but domain-dependent, while event streams are sparse
+            yet more domain-invariant. Direct feature alignment between these modalities is therefore
+            suboptimal, as it can force RGB representations to mimic sparse event features and lose
+            semantic detail. To overcome this, we introduce
+            <span class="highlight">Privileged Event-based Predictive Regularization</span>:
+            RGB features are trained to predict event-derived latent representations in a shared
+            feature space, transferring event robustness without direct alignment or input reconstruction.
+          </p>
+
+          <p>
+            PEPR improves robustness to day-to-night and adverse domain shifts across object detection
+            and semantic segmentation, while preserving a standard RGB-only inference pipeline.
+          </p>
+        </div>
+
+        <div class="tldr-box has-text-left">
+          <strong>TL;DR:</strong>
+          PEPR uses events only during training. Instead of aligning RGB and event features,
+          it makes RGB features predict event latents, improving robustness while keeping RGB-only inference.
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Key Ideas -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered section-title">Key Ideas</h2>
+
+    <div class="columns is-centered">
+
+      <div class="column">
+        <div class="card-box">
+          <h3>Prediction, not alignment</h3>
+          <p>
+            PEPR avoids forcing dense RGB features to directly match sparse event features.
+            Instead, the RGB encoder predicts event-derived latent targets.
+          </p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card-box">
+          <h3>Events as privileged information</h3>
+          <p>
+            Events are used only during training as an additional supervisory signal.
+            They are discarded after training.
+          </p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card-box">
+          <h3>RGB-only deployment</h3>
+          <p>
+            At test time, PEPR uses the original RGB model without event input,
+            additional sensors, or extra inference modules.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Method -->
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <h2 class="title is-3 has-text-centered section-title">Method</h2>
+
+    <div class="content has-text-justified">
+      <p>
+        During training, PEPR uses an RGB encoder, a task-specific prediction head, a privileged
+        event encoder, and a predictor. The RGB stream is optimized with the standard supervised task
+        loss, while the predictor maps RGB features to event latent patches produced by the event encoder.
+        The event encoder and predictor are removed at inference, leaving a robust RGB-only model.
+      </p>
+    </div>
+
+    <div class="has-text-centered">
+      <img src="./static/images/stage_2.png" alt="PEPR training and inference pipeline" class="result-image">
+    </div>
+
+  </div>
+</section>
+
+<!-- Results -->
+<section class="section hero is-light">
+  <div class="container">
+
+    <h2 class="title is-3 has-text-centered section-title">Results</h2>
+
+    <div class="container is-max-desktop">
+      <div class="content has-text-centered">
+        <p>
+          PEPR improves RGB-only detection and segmentation robustness under domain shift,
+          outperforming direct alignment-based regularization.
+        </p>
+      </div>
+    </div>
+
+    <div class="container is-max-desktop">
+
+      <h3 class="title is-4 has-text-centered">Semantic Segmentation</h3>
+      <img src="./static/images/segmentation.png" alt="Semantic segmentation results" class="result-image">
+
+      <h3 class="title is-4 has-text-centered">Object Detection — FRED</h3>
+      <img src="./static/images/fred.png" alt="FRED object detection results" class="result-image">
+
+      <h3 class="title is-4 has-text-centered">Object Detection — Hard-DSEC</h3>
+      <img src="./static/images/harddsec.png" alt="Hard-DSEC object detection results" class="result-image">
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Datasets -->
+<section class="section" id="datasets">
+  <div class="container is-max-desktop">
+
+    <h2 class="title is-3 has-text-centered section-title">Datasets</h2>
+
+    <div class="content">
+      <ul class="dataset-list">
+        <li>
+          <strong>FRED:</strong>
+          <a href="https://huggingface.co/datasets/GabrieleMagrini/FRED" target="_blank">
+            Hugging Face dataset
+          </a>
+        </li>
+
+        <li>
+          <strong>DSEC:</strong>
+          <a href="https://dsec.ifi.uzh.ch/" target="_blank">
+            official dataset website
+          </a>
+        </li>
+
+        <li>
+          <strong>Hard-DSEC-DET:</strong>
+          <a href="https://github.com/djessy1998/EA-DETR" target="_blank">
+            EA-DETR repository
+          </a>
+        </li>
+
+        <li>
+          <strong>Cityscapes:</strong>
+          <a href="https://www.cityscapes-dataset.com/" target="_blank">
+            official website
+          </a>
+        </li>
+
+        <li>
+          <strong>Cityscapes Adverse:</strong>
+          <a href="https://huggingface.co/datasets/naufalso/cityscape-adverse" target="_blank">
+            Hugging Face dataset
+          </a>
+        </li>
+      </ul>
+
+      <p>
+        To simulate the event version of Cityscapes, please refer to the official
+        <a href="https://github.com/uzh-rpg/rpg_vid2e" target="_blank">VID2E</a> repository.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Code -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop has-text-centered">
+    <h2 class="title is-3 section-title">Code</h2>
+
+    <p>
+      Code for semantic segmentation and object detection is coming soon.
+    </p>
+
+    <p>
+      <a href="https://github.com/miccunifi/PEPR" target="_blank"
+         class="button is-dark is-rounded">
+        <span class="icon">
+          <i class="fab fa-github"></i>
+        </span>
+        <span>GitHub Repository</span>
+      </a>
+    </p>
+  </div>
+</section>
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title section-title">BibTeX</h2>
+
+<pre><code>@inproceedings{magrini2026pepr,
+  title={PEPR: Privileged Event-based Predictive Regularization for Domain Generalization},
+  author={Magrini, Gabriele and Becattini, Federico and Biondi, Niccol{\`o} and Pala, Pietro},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2026}
+}</code></pre>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        This website template follows the academic project page style inspired by
+        <a href="https://nerfies.github.io/" target="_blank">Nerfies</a>.
+      </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
